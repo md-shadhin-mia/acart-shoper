@@ -32,25 +32,25 @@ function Header(){
                 
                   <ul className="lg:flex items-center justify-between text-md text-gray-900 font-semibold pt-4 lg:pt-0">
                     <li className="relative inline-block text-left">
-                      <Link to="features" className="flex items-center lg:p-4 py-3 px-0 block hover:text-blue-600 font-semibold" id="options-menue1" aria-haspopup="true" aria-expanded="true">
+                      <Link to="features" className="items-center lg:p-4 py-3 px-0 block hover:text-blue-600 font-semibold" id="options-menue1" aria-haspopup="true" aria-expanded="true">
                         Features
                       </Link>
                     </li>
                     <li>
-                      <Link to="/pricing" className="flex items-center lg:p-4 py-3 px-0 block hover:text-blue-600 font-semibold" id="options-menue" aria-haspopup="true" aria-expanded="true">
+                      <Link to="/pricing" className="items-center lg:p-4 py-3 px-0 block hover:text-blue-600 font-semibold" id="options-menue" aria-haspopup="true" aria-expanded="true">
                         Pricing
                       </Link>
                     </li>
                     <li>
                     </li><li>
-                      <Link to="/signin" className="flex items-center lg:p-4 py-3 px-0 block hover:text-blue-600 font-semibold" id="options-menue2" aria-haspopup="true" aria-expanded="true">
+                      <Link to="/signin" className="items-center lg:p-4 py-3 px-0 block hover:text-blue-600 font-semibold" id="options-menue2" aria-haspopup="true" aria-expanded="true">
                         Sign in
                       </Link>
                     </li>
                   
                     <li className="mr-4 text-muted">or</li>
                     <li>
-                      <Link to="/login" className="btn" href="login.html">Login</Link>
+                      <Link to="/login" className="btn btn-success" href="login.html">Login</Link>
                     </li>
                   </ul>
               </div>
