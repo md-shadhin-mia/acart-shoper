@@ -6,7 +6,9 @@ export default function Layout() {
     return (
         <div className="app bg-[#f1f5f9]">
           <Header/>
-          <Outlet/>
+          <div className="max-w-6xl mx-auto px-2 lg:px-8 py-2 w-full flex justify-center">
+            <Outlet/>
+          </div>
           <Footer/>
         </div>
     )

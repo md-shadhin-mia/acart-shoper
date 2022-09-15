@@ -3,13 +3,13 @@ import SwipeBanner from "../componets/swipeBanner";
 
 function Home(){
     return (
-        <span className="text-3xl font-bold">
+        <div className="w-full">
             <SwipeBanner />
-            Home
-            <div className="w-full">
+            <div className="w-full flex flex-wrap mt-2">
                 <ProductCard />
             </div>
-        </span>
+        </div>
+        
     )
 }
 

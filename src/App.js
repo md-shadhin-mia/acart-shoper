@@ -12,7 +12,6 @@ import Topup from "./pages/topup";
 function App() {
   return (
     <BrowserRouter>
-        <section className="max-w-6xl  mx-auto px-4 lx:px-8 my-8">
           <Routes>
             <Route element={<Layout />}>
               <Route path="" element={<Home/>}/>
@@ -22,9 +21,7 @@ function App() {
             </Route>
             <Route path="admin" element={<AdminPage />} >
             </Route>
-          </Routes>
-        </section>
-        
+          </Routes>        
     </BrowserRouter>
     
   );

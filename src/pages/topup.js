@@ -24,12 +24,11 @@ function Topup(){
     }
 
     return (
-        <div className = "topup">
+        <div className = "topup w-full">
             <div>this simple text</div>
             <h1 className="text-3xl">{params.id}</h1>
             <div className="max-w-3xl mx-auto mt-4">
-                
-                <div className="card p-5">
+                <div className="card p-5 w-full">
                     <h1 className="text-3xl mb-1 text-center">
                         Information of Games
                     </h1>
