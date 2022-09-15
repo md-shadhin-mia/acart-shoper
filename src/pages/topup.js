@@ -1,16 +1,33 @@
 import { useState } from "react";
-import { useMatch, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import GameinfoForm from "../componets/gameInfoForm";
+import PrementMethod from "../componets/prementMethod";
+import SelectPakage from "../componets/selectPakage";
 
 function Topup(){
     const params = useParams();
-    console.log(params)
     const [step, setStep] = useState(1);
+
+    const formStep= (step)=>{
+        switch (step) {
+            case 1:
+                return <GameinfoForm />
+                break;
+            case 2:
+                return <SelectPakage />
+                break;
+            case 3:
+                return <PrementMethod />
+            default:
+                break;
+        }
+    }
+
     return (
         <div className = "topup">
             <div>this simple text</div>
             <h1 className="text-3xl">{params.id}</h1>
-            <div className="grid lg:grid-cols-2 gap-5 mt-4">
+            <div className="max-w-3xl mx-auto mt-4">
                 
                 <div className="card p-5">
                     <h1 className="text-3xl mb-1 text-center">
@@ -25,9 +42,11 @@ function Topup(){
                         <p id="form-progress-completion" className="js-form-progress-completion sr-only" aria-live="polite">99% complete</p>
                     </div>
 
-                    <GameinfoForm />
-                    <div className="actions py-2 border-t-2">
-                        <button className="btn btn-success" onClick={()=>{setStep(step+1)}}>Continie</button>
+                    {formStep(step)}
+                    
+                    <div className="actions py-2 border-t-2 flex">
+                        {step > 1 && (<button className="btn bg-gray-500" onClick={()=>{setStep(step-1)}}>Back</button>)}
+                        <button className="btn btn-success ml-auto" onClick={()=>{setStep(step+1)}}>Continie</button>
                     </div>
                 </div>
             </div>

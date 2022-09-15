@@ -44,7 +44,7 @@ code {
   }
   progress::-webkit-progress-bar {
       background-color: #ddd;
-    }
+  }
     
   progress::-webkit-progress-value {
     @apply bg-green-500 ;
@@ -85,10 +85,10 @@ code {
 
 
   .fieldgroup {
-    @apply my-2 relative;
+    @apply my-4 relative px-2;
   }
   .fieldgroup label{
-    @apply absolute top-[0.8rem] left-0 block hover:cursor-text;
+    @apply absolute top-[0.8rem] left-2 block hover:cursor-text;
     transition: 0.5s ease-out;
     will-change: top, font-size;
   }
@@ -100,7 +100,7 @@ code {
     padding-left: 0;
     background:transparent;
     border: none;
-    border-bottom: 2px solid #444;
+    /* border-bottom: 2px solid #444; */
     transition: 0.5s;
     width: calc(100% - .6rem);
     max-width: 350px;
@@ -115,12 +115,19 @@ code {
     border-color: #444;
   }
   
-  .fieldgroup input:focus + label{
-    top: -.8rem;
-    font-size: .7rem;
-  }
+  .fieldgroup input:focus + label,
   .fieldgroup input.hasInput + label {
     top: -.8rem;
-    font-size: .7rem;
+    font-size: .8rem;
+    background-color: white;
+    padding: 4px;
+  }
+
+  .pakages{
+    @apply relative p-2 text-sm m-2 rounded-xl border hover:border-green-300 cursor-pointer font-bold flex justify-center;
+  }
+
+  .pakages.selected{
+    @apply bg-green-100;
   }
 }

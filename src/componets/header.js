@@ -4,14 +4,15 @@ import {Link} from "react-router-dom"
 
 function Header(){
     return (
+      <div className="header-content">
         <header className="py-3 lg:py-0 bg-white shadow-md mdk-header--fixed" data-aos="fade-down" id="navbar" data-primary="data-primary">
             <div className="max-w-6xl  mx-auto px-8 flex flex-wrap items-center">
               <div className="items-center">
                 <Link to="/" className="flex items-center text-xl w-sidebar mr-4 hover:no-underline">
                     <span className="mr-1 -mt-1 text-primary">
-                      <Logo/>
+                      <Logo className="h-8 w-8"/>
                     </span>
-                    <span><strong>TailStack</strong></span>
+                    <span><strong >TailStack</strong></span>
                 </Link>
               </div>
 
@@ -56,6 +57,8 @@ function Header(){
               </div>
             </div>
           </header>
+      </div>
+        
     )
 }
 
