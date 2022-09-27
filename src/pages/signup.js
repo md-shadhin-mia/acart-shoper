@@ -2,27 +2,36 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, NavLink, useNavigate} from "react-router-dom";
 import {ReactComponent as Logo} from "../logo.svg";
-function Signin({setAuth}) {
+function Signup({setAuth}) {
+    const [fullnameValue, setFullnameValue] = useState("");
     const [emailValue, setEmailValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
+    const [conframpasswordValue, setConframpasswordValue] = useState("");
+    const [matchPass, setMatchPass] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
     function handleSubmint(even){
         even.preventDefault();
-        axios.post(window.apiBaseUrl+"/login", {username:emailValue, password: passwordValue})
-        .then((res)=>{
-            window.localStorage.setItem("authTocken",res.data.token);
-            if(res.data.admin){
-                window.localStorage.setItem("isAdmin", true);
-            }else{
-                window.localStorage.removeItem("isAdmin");
-            }
-            setAuth(true);
-            navigate(-1)
-        }).catch((err)=>{
-            console.error(err);
-            setErrorMessage(err.response.data.message)
-        })
+        setMatchPass(passwordValue === conframpasswordValue);
+        if(passwordValue === conframpasswordValue){
+            axios.post(window.apiBaseUrl+"/signup", {fullname:fullnameValue, username:emailValue, password:passwordValue})
+            .then((res)=>{
+                window.localStorage.setItem("authTocken",res.data.token);
+                if(res.data.admin){
+                    window.localStorage.setItem("isAdmin", true);
+                }else{
+                    window.localStorage.removeItem("isAdmin");
+                }
+                setAuth(true);
+                navigate(-1)
+            }).catch((err)=>{
+                console.error(err);
+                setErrorMessage(err.response.data.message)
+            })
+        }else{
+            setErrorMessage("Confram Password not match")
+        }
+       
     }
     return (
         <div className="w-full lg:w-6/12 px-4">
@@ -36,7 +45,7 @@ function Signin({setAuth}) {
                     </div>
                 <div className="rounded-t mb-0 px-6 py-6">
                     <div className="text-center mb-3">
-                        <h6 className="text-blueGray-500 text-sm font-bold">Sign In with</h6>
+                        <h6 className="text-blueGray-500 text-sm font-bold">Sign UP with</h6>
                     </div>
                     <div className="btn-wrapper text-center"><button
                             className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
@@ -49,7 +58,7 @@ function Signin({setAuth}) {
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                     <div className="text-blue-900 text-center font-bold">
-                        <small>Or sign In with credentials</small>
+                        <small>Or Sign UP with credentials</small>
                     </div>
                     {
                         errorMessage !== "" && (<div className="text-red-600 text-center p-2 border border-red-500 font-bold ">
@@ -60,11 +69,24 @@ function Signin({setAuth}) {
                     <form onSubmit={handleSubmint} className="mt-4">
                         <div className="fieldgroup border-2 rounded-lg focus-within:border-green-400 mb-2 w-full">
                             <input 
+                                type="text" name="fullname" id="fullname" 
+                                value={fullnameValue}
+                                onChange={(even)=>setFullnameValue(even.target.value)}
+                                className={"w-full"+(fullnameValue !==""?" hasInput":"")}
+                                required
+                            />
+                            <label htmlFor="fullname">Full Name</label>
+                        </div>
+                        <div className={"fieldgroup border-2 rounded-lg focus-within:border-green-400 mb-2 w-full"}>
+                            <input 
                                 type="email" name="email" id="email" 
                                 value={emailValue}
                                 onChange={(even)=>setEmailValue(even.target.value)}
+                                
                                 className={"w-full"+(emailValue !==""?" hasInput":"")}
+
                                 required
+                                autoComplete="username"
                             />
                             <label htmlFor="email">Email</label>
                         </div>
@@ -75,9 +97,25 @@ function Signin({setAuth}) {
                                 value={passwordValue}
                                 onChange={(even)=>setPasswordValue(even.target.value)}
                                 className={"w-full"+(passwordValue !==""?" hasInput":"")}
+                                autoComplete="new-password"
                                 required
                             />
                             <label htmlFor="password">Password</label>
+                        </div>
+
+                        <div className={"fieldgroup border-2 rounded-lg focus-within:border-green-400 w-full"+(matchPass? "":" border-red-500 focus-within:border-red-400")}>
+                            <input 
+                                type="password" name="password" id="password" 
+                                value={conframpasswordValue}
+                                onChange={(even)=>{
+                                    setConframpasswordValue(even.target.value);
+                                    setMatchPass(passwordValue === even.target.value);
+                                }}
+                                className={"w-full"+(conframpasswordValue !==""?" hasInput":"")}
+                                autoComplete="new-password"
+                                required
+                            />
+                            <label htmlFor="password">Confram Password</label>
                         </div>
                        
                         <div className="text-center mt-6">
@@ -92,4 +130,4 @@ function Signin({setAuth}) {
     )
 }
 
-export default Signin;
+export default Signup;

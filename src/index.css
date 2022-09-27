@@ -23,6 +23,10 @@ code {
   .btn-success{
     @apply bg-green-500 hover:bg-green-600;
   }
+
+  .btn-primary{
+    @apply bg-blue-500 hover:bg-blue-600;
+  }
   .card{
     @apply rounded overflow-hidden shadow-lg bg-white;
   }
@@ -52,12 +56,7 @@ code {
   }
 
   .form-progress-indicator {
-    position: absolute;
-    top: -5px;
-    left: 0;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
+    @apply top-0 left-0 absolute h-5 w-5;
     background: white;
     border: 3px solid #ddd;
     border-radius: 50%;
@@ -85,7 +84,7 @@ code {
 
 
   .fieldgroup {
-    @apply my-4 relative px-2;
+    @apply my-4 relative px-2 inline-block;
   }
   .fieldgroup label{
     @apply absolute top-[0.8rem] left-2 block hover:cursor-text;
@@ -102,8 +101,6 @@ code {
     border: none;
     /* border-bottom: 2px solid #444; */
     transition: 0.5s;
-    width: calc(100% - .6rem);
-    max-width: 350px;
     border-radius: 0;
    
   } 
@@ -130,4 +127,9 @@ code {
   .pakages.selected{
     @apply bg-green-100;
   }
+
+
+  /* admin pannels design */
+
+
 }

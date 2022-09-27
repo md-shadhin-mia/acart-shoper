@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+import {ReactComponent as Logo} from "../logo.svg";
 function Footer(){
     return (
         <div className="pt-8 bg-white mt-8">
@@ -5,10 +7,14 @@ function Footer(){
                 <div className="lg:flex -mx-2">
                     <div className="lg:w-2/5 px-2 md:pr-4 mb-4">
                         <div className="font-bold text-lg mb-4 flex items-center">
-                        <div className="mr-2">
-                            <span className=" text-primary"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path></svg></span>
-                        </div> 
-                        <span> TailStack</span>
+                            <div className="mr-2">
+                                <Link to="/" className="flex items-center text-xl w-sidebar mr-4 hover:no-underline">
+                                    <span className="mr-1 -mt-1 text-primary">
+                                        <Logo className="h-8 w-8"/>
+                                    </span>
+                                    <span><strong className="text-3xl">GameBazar</strong></span>
+                                </Link>
+                            </div> 
                         </div>
                         <p className="text-gray-dark">Stack of beautiful Tailwind CSS UI components.</p>
                     </div>

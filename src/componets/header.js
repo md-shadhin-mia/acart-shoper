@@ -1,8 +1,10 @@
-import {FaBars} from "react-icons/fa";
+import {FaBars, FaUserAlt, FaUserCircle} from "react-icons/fa";
 import {ReactComponent as Logo} from "../logo.svg"
 import {Link} from "react-router-dom"
+import Avatar from "./avatar";
 
-function Header(){
+function Header(props){
+  const {auth} = props;
     return (
       <div className="header-content">
         <header className="py-3 lg:py-0 bg-white shadow-md mdk-header--fixed" data-aos="fade-down" id="navbar" data-primary="data-primary">
@@ -12,19 +14,9 @@ function Header(){
                     <span className="mr-1 -mt-1 text-primary">
                       <Logo className="h-8 w-8"/>
                     </span>
-                    <span><strong className="text-3xl">TailStack</strong></span>
+                    <span><strong className="text-3xl">GameBazar</strong></span>
                 </Link>
               </div>
-
-              {/* search options */}
-              {/* <div className="flex-1 flex justify-between">
-                <div className="relative text-gray-darker hidden lg:flex flex-grow">
-                    <input type="search" name="search" placeholder="Search" className="px-lxshadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outlin"/>
-                    <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">
-                      <FaSearch />
-                    </button>
-                  </div>
-              </div> */}
 
               <label data-toggle="sidebar" className="pointer-cursor ml-auto lg:hidden block"><FaBars/></label>
               <input className="hidden" type="checkbox" id="menu-toggle"/>
@@ -42,17 +34,25 @@ function Header(){
                         Pricing
                       </Link>
                     </li>
-                    <li>
-                    </li><li>
-                      <Link to="/signin" className="items-center lg:p-4 py-3 px-0 block hover:text-blue-600 font-semibold" id="options-menue2" aria-haspopup="true" aria-expanded="true">
-                        Sign in
-                      </Link>
-                    </li>
-                  
-                    <li className="mr-4 text-muted">or</li>
-                    <li>
-                      <Link to="/login" className="btn btn-success" href="login.html">Login</Link>
-                    </li>
+                      {
+                        auth ? <>
+                        <li>
+                          <Avatar setAuth={props.setAuth}/>
+                        </li>
+                        </>:
+                        <>
+                        <li>
+                        <Link to="/signin" className="items-center lg:p-4 py-3 px-0 block hover:text-blue-600 font-semibold" id="options-menue2" aria-haspopup="true" aria-expanded="true">
+                          Login
+                        </Link>
+                      </li>
+                    
+                      <li className="mr-4 text-muted">or</li>
+                      <li>
+                        <Link to="/signup" className="btn btn-success" href="login.html">Sign up</Link>
+                      </li>
+                        </>
+                      }
                   </ul>
               </div>
             </div>

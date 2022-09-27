@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -8,8 +8,13 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination, Autoplay } from "swiper";
+import tempData from "../tempData";
 
 export default function SwipeBanner() {
+    const [banners, setBanner]= useState([]);
+    useEffect(()=>{
+      setBanner(tempData.image);
+    })
     return (
         <>
           <Swiper
@@ -25,15 +30,9 @@ export default function SwipeBanner() {
             modules={[Autoplay, Pagination]}
             className="mySwiper"
           >
-            <SwiperSlide><div className="w-full h-20 bg-green-600" >Slide 1</div></SwiperSlide>
-            <SwiperSlide><div className="w-full h-20 bg-green-600" >Slide 1</div></SwiperSlide>
-            <SwiperSlide><div className="w-full h-20 bg-green-600" >Slide 1</div></SwiperSlide>
-            <SwiperSlide><div className="w-full h-20 bg-green-600" >Slide 1</div></SwiperSlide>
-            <SwiperSlide><div className="w-full h-20 bg-green-600" >Slide 1</div></SwiperSlide>
-            <SwiperSlide><div className="w-full h-20 bg-green-600" >Slide 1</div></SwiperSlide>
-            <SwiperSlide><div className="w-full h-20 bg-green-600" >Slide 1</div></SwiperSlide>
-            <SwiperSlide><div className="w-full h-20 bg-green-600" >Slide 1</div></SwiperSlide>
-            <SwiperSlide><div className="w-full h-20 bg-green-600" >Slide 1</div></SwiperSlide>
+            {banners.map((value, index)=>{
+              return <SwiperSlide key={index}><div className="w-full bg-green-600 max-h-screen h-[60vh]" ><img src={value} className="object-cover w-full h-full"/></div></SwiperSlide>
+            })}
           </Swiper>
         </>
       );
