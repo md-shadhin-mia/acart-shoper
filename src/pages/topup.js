@@ -16,22 +16,23 @@ function Topup(){
     //for post
     const [product_id, setProduct_id]= useState("");
     const [game_id, setGame_id]= useState("");
-    const [variant_id, setVariant_id]= useState("");
+    const [variant, setVariant_id]= useState("");
     const [prement_method, setprement_method]= useState("");
     //for prement
     const [orderData, setOrderData] = useState(null);
     async function OrderSubmit(){
         // console.log({product_id, game_id, variant_id, prement_method})
         setStep(4);
-        axios.post(window.apiBaseUrl+"/order", {product_id, game_id, variant_id, prement_method})
+        axios.post(window.apiBaseUrl+"/order", {product_id, game_id, variant, prement_method, customer:window.sessionStorage.getItem("user_id")})
         .then(({data})=>{
             console.log(data);
-            setOrderData(data.order);
+            setOrderData(data);
         })
         .catch(err=>{
             console.error(err);
         })
     }
+
     const formStep = (step)=>{
         switch (step) {
             case 1:
@@ -42,7 +43,7 @@ function Topup(){
                 return <PrementMethod variant={variantSelect} onOrderSubmit={OrderSubmit}
                  onSelectPrement={(prement)=>{setprement_method(prement)}}/>
             case 4: 
-                return <PayNow orderData={orderData}/>
+                return <PayNow orderData={orderData} product={product}/>
             default:
                 break;
         }

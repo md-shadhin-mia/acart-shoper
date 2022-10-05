@@ -15,7 +15,6 @@ export default function Avatar(props){
     useEffect(()=>{
         axios.get(window.apiBaseUrl+"/user")
         .then(({data})=>{
-            console.log(data.message);
             setFullname(data.user.fullname);
             setUserName(data.user.username);
         })

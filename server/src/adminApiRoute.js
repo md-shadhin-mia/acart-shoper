@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { Image } = require("./imageModel");
+const { Order } = require("./orderModel");
 const { ProductVariant, Product } = require("./productModel");
 const userModel = require("./userModel");
 
@@ -54,9 +55,28 @@ adminApiRoute.get("/product-details/:id",async (req, res)=>{
     res.json(products);
 });
 
+
+
+
 adminApiRoute.delete("/product-delete/:id", async (req, res)=>{
     product = await Product.findByIdAndDelete(req.params.id);
     res.json({message: "ok", product});
+})
+
+//orders
+
+adminApiRoute.get("/orders",async (req, res)=>{
+    orders =await Order.find()
+    .populate("product_id", ["title"])
+    .populate("customer", ["fullname"])
+    .populate("variant", ["title","price"]);
+    res.json(orders);
+});
+
+
+adminApiRoute.put("/order-status/:id", async (req, res)=>{
+    let order = await Order.findByIdAndUpdate(req.params.id, {status:req.body.status})
+    res.json(order);
 })
 
 module.exports = adminApiRoute;

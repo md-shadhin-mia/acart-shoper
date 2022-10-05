@@ -12,21 +12,20 @@ const upload = multer({dest:"./uploads"});
 const router = Router()
 
 router.get("/user", (req, res)=>{
-    res.status(200).json({message:"Hello "+req.decoded.username,user:req.decoded})
+    res.status(200).json({user:req.decoded})
 });
 
 router.post("/order", async (req, res)=>{
-    const {product_id, game_id, prement_method} = req.body;
-
-    let order = new Order({product_id, game_id, prement_method, prement_info: uniqueNum()+""})
+    const {product_id, game_id, variant, prement_method, customer} = req.body;
+    let order = new Order({product_id, customer, game_id, variant, prement_method, prement_info: uniqueNum()+""})
     await order.save();
-    res.json({order});
+    res.json(order);
 })
 
 router.put("/order-pay/:id", async (req, res)=>{
 
     let order = await Order.findByIdAndUpdate(req.params.id, {payed:true})
-    res.json({order});
+    res.json(order);
 })
 
 

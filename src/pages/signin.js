@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, NavLink, useNavigate} from "react-router-dom";
 import {ReactComponent as Logo} from "../logo.svg";
-function Signin({setAuth}) {
+function Signin({login}) {
     const [emailValue, setEmailValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -11,13 +11,7 @@ function Signin({setAuth}) {
         even.preventDefault();
         axios.post(window.apiBaseUrl+"/login", {username:emailValue, password: passwordValue})
         .then((res)=>{
-            window.localStorage.setItem("authTocken",res.data.token);
-            if(res.data.admin){
-                window.localStorage.setItem("isAdmin", true);
-            }else{
-                window.localStorage.removeItem("isAdmin");
-            }
-            setAuth(true);
+            login(res.data)
             navigate(-1)
         }).catch((err)=>{
             console.error(err);

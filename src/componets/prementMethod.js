@@ -31,19 +31,19 @@ function PrementMethod({variant, onSelectPrement, onOrderSubmit}){
         <div>
             <div className="flex flex-col">
                 <div 
-                    className={"relative flex justify-center items-center p-1 m-1 rounded hover:bg-green-100"+ (selectedMethod==="bkash"?" bg-green-200":"")+ (variant.bkash==""?" opacity-50 pointer-events-none":"")} 
+                    className={"relative flex justify-center items-center p-1 m-1 rounded hover:bg-green-100"+ (selectedMethod === "bkash"?" bg-green-200":"")+ (variant.bkash==""?" opacity-50 pointer-events-none":"")} 
                     id="bkash"
                     onClick={()=>{setSelectMethod("bkash")}}
                     >
                     {
-                        selectedMethod==="bkash"?<span className="absolute left-2"><FaCheckCircle className="text-green-600 "/></span>:""
+                        selectedMethod === "bkash"?<span className="absolute left-2"><FaCheckCircle className="text-green-600 "/></span>:""
                     }
                     {
                         getPrementMethodIcon("bkash")
                     }
                 </div>
                 <div 
-                    className={"relative flex justify-center items-center p-1 m-1 rounded hover:bg-green-100"+ (selectedMethod==="nogot"?" bg-green-200":"")+ (variant.nogot==""?" opacity-50 pointer-events-none":"")} 
+                    className={"relative flex justify-center items-center p-1 m-1 rounded hover:bg-green-100"+ (selectedMethod === "nogot"?" bg-green-200":"")+ (variant.nogot==""?" opacity-50 pointer-events-none":"")} 
                     id="nogot"
                     onClick={()=>{setSelectMethod("nogot")}}
                     >

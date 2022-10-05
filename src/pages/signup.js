@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, NavLink, useNavigate} from "react-router-dom";
 import {ReactComponent as Logo} from "../logo.svg";
-function Signup({setAuth}) {
+function Signup({login}) {
     const [fullnameValue, setFullnameValue] = useState("");
     const [emailValue, setEmailValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
@@ -16,13 +16,7 @@ function Signup({setAuth}) {
         if(passwordValue === conframpasswordValue){
             axios.post(window.apiBaseUrl+"/signup", {fullname:fullnameValue, username:emailValue, password:passwordValue})
             .then((res)=>{
-                window.localStorage.setItem("authTocken",res.data.token);
-                if(res.data.admin){
-                    window.localStorage.setItem("isAdmin", true);
-                }else{
-                    window.localStorage.removeItem("isAdmin");
-                }
-                setAuth(true);
+                login(res.data);
                 navigate(-1)
             }).catch((err)=>{
                 console.error(err);

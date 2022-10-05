@@ -4,7 +4,7 @@ import NavBar from "../admin-componet/navBar"
 import Sidebar from "../admin-componet/sidebar"
 import {ReactComponent as Logo} from "../logo.svg"
 export default function AdminPage(){
-    if(localStorage.getItem("isAdmin")==null){
+    if(sessionStorage.getItem("isAdmin")==null){
         return <Navigate to="/" />
     }
     return (

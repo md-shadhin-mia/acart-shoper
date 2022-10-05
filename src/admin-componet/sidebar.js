@@ -1,5 +1,5 @@
 import {ReactComponent as Logo} from "../logo.svg"
-import { FaChartBar, FaDashcube, FaUsers} from "react-icons/fa"
+import { FaChartBar, FaDashcube, FaShippingFast, FaUsers} from "react-icons/fa"
 import { Link, NavLink} from "react-router-dom"
 export default function Sidebar(){
     return (
@@ -41,6 +41,16 @@ export default function Sidebar(){
                             aria-current="page"
                             >
                                 <span><FaUsers/></span>Customers
+                            </NavLink>
+                        </li>
+                        <li className="rounded-lg mb-4">
+                            <NavLink 
+                            className={({isActive})=>
+                                "flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg shadow-md"+(isActive && " bg-green-700 text-white")}
+                            to="orders"
+                            aria-current="page"
+                            >
+                                <span><FaShippingFast/></span>Orders
                             </NavLink>
                         </li>
                     </ul>
