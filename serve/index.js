@@ -27,7 +27,7 @@ app.use("/api", basicRouter);
 app.use("/api", authoLogin);
 app.use("/api", tockenAuth, authApiRoute);
 app.use("/api", tockenAuth, adminApiRoute);
-app.use(express.static("../build"))
+app.use(express.static("./build"))
 app.use(errorHandler);
 
 app.listen(PORT, function(){
