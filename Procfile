@@ -1,1 +1,1 @@
-web: cd server;npm startex
+web: npm startex
