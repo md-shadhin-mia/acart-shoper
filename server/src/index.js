@@ -29,6 +29,9 @@ app.use("/api", authoLogin);
 app.use("/api", tockenAuth, authApiRoute);
 app.use("/api", tockenAuth, adminApiRoute);
 app.use(express.static(path.join(__dirname, "../","../build")))
+app.get("/*", (req, res)=>{
+    res.sendFile(path.join(__dirname, "../","../build/index.html"))
+})
 app.use(errorHandler);
 
 app.listen(PORT, function(){
