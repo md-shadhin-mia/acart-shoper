@@ -6,7 +6,6 @@ const multer = require("multer");
 const { Image } = require("./imageModel");
 const { Order } = require("./orderModel");
 const uniqueNum = require("./uniqueNum");
-const { wait } = require("@testing-library/user-event/dist/utils");
 const upload = multer({dest:"./uploads"});
 
 const router = Router()

@@ -3,7 +3,7 @@ const connectDB = require("./connectDb");
 const authoLogin = require("./authLogin")
 const tockenAuth = require("./authValidation")
 const authApiRoute = require("./authApiRoute")
-
+const path = require("path")
 
 var cors = require('cors');
 const { basicRouter } = require("./basicRouter");
@@ -27,7 +27,7 @@ app.use("/api", basicRouter);
 app.use("/api", authoLogin);
 app.use("/api", tockenAuth, authApiRoute);
 app.use("/api", tockenAuth, adminApiRoute);
-app.use(express.static("../build"))
+app.use(express.static(path.join(__dirname, "../build")))
 app.use(errorHandler);
 
 app.listen(PORT, function(){
