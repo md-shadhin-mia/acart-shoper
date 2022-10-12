@@ -28,10 +28,10 @@ app.use("/api", basicRouter);
 app.use("/api", authoLogin);
 app.use("/api", tockenAuth, authApiRoute);
 app.use("/api", tockenAuth, adminApiRoute);
-app.use(express.static(path.join(__dirname, "../uploads/")))
+app.use(express.static(path.join(__dirname, "../","../build")))
 app.use(errorHandler);
 
 app.listen(PORT, function(){
-    console.log("server listen on 8000");
+    console.log("server listen on "+PORT);
 });
 
