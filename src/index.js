@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import axios from "axios"
 import { BrowserRouter } from 'react-router-dom';
 
-window.apiBaseUrl = "http://localhost:3000/api";
+window.apiBaseUrl = "/api";
 axios.defaults.headers.common["x-access-token"] = localStorage.getItem("authTocken");
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
