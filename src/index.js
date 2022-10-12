@@ -1,5 +1,5 @@
 const express = require("express");
-const connectDB = require("./connectDb");
+// const connectDB = require("./connectDb");
 const authoLogin = require("./authLogin")
 const tockenAuth = require("./authValidation")
 const authApiRoute = require("./authApiRoute")
@@ -19,7 +19,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-connectDB();
+// connectDB();
 // app.get("/", function(req, res){
 //     res.json({hello:"this is shop api@ created by Shadhin"})
 // })
