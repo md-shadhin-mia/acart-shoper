@@ -1,24 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import axios from "axios"
-import { BrowserRouter } from 'react-router-dom';
+const express = require("express");
+const connectDB = require("./connectDb");
+const authoLogin = require("./authLogin")
+const tockenAuth = require("./authValidation")
+const authApiRoute = require("./authApiRoute")
 
-window.apiBaseUrl = "http://localhost:3000/api";
-axios.defaults.headers.common["x-access-token"] = localStorage.getItem("authTocken");
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-      <BrowserRouter>
-        <App/>
-      </BrowserRouter>
-  </React.StrictMode>
-);
+var cors = require('cors');
+const { basicRouter } = require("./basicRouter");
+const adminApiRoute = require("./adminApiRoute");
+const errorHandler = require("./errorHandle");
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+require("dotenv").config();
+
+let PORT = process.env.PORT || 3000;
+
+const app = express();
+
+
+app.use(cors());
+app.use(express.json());
+connectDB();
+// app.get("/", function(req, res){
+//     res.json({hello:"this is shop api@ created by Shadhin"})
+// })
+app.use("/api", basicRouter);
+app.use("/api", authoLogin);
+app.use("/api", tockenAuth, authApiRoute);
+app.use("/api", tockenAuth, adminApiRoute);
+app.use(express.static("../build"))
+app.use(errorHandler);
+
+app.listen(PORT, function(){
+    console.log("server listen on "+PORT);
+});
+

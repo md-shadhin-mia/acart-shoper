@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.758e2489.css",
+    "main.js": "/static/js/main.851afe2c.js",
+    "static/js/787.8359f461.chunk.js": "/static/js/787.8359f461.chunk.js",
+    "static/media/card-prement.svg": "/static/media/card-prement.d09cd53d1eec74dd4ea7de3478a7c47c.svg",
+    "static/media/rocket-prement.svg": "/static/media/rocket-prement.7d26ce0aa71a665cfb94082ae75ce9f3.svg",
+    "static/media/nogot-prement.svg": "/static/media/nogot-prement.7657b8eb9cd9e867642eca2efe72607d.svg",
+    "static/media/bkash-prement.svg": "/static/media/bkash-prement.b7f6d48e8dc9f49160e4b73f0a225ee3.svg",
+    "static/media/logo.svg": "/static/media/logo.44fbade3b6e2b2305b78a6098d32eb7c.svg",
+    "index.html": "/index.html",
+    "main.758e2489.css.map": "/static/css/main.758e2489.css.map",
+    "main.851afe2c.js.map": "/static/js/main.851afe2c.js.map",
+    "787.8359f461.chunk.js.map": "/static/js/787.8359f461.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.758e2489.css",
+    "static/js/main.851afe2c.js"
+  ]
+}
