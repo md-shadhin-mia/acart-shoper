@@ -1,5 +1,5 @@
 const express = require("express");
-const connectDB = require("./connectDb");
+const connectDB = require("./connectDB");
 const authoLogin = require("./authLogin")
 const tockenAuth = require("./authValidation")
 const authApiRoute = require("./authApiRoute")
