@@ -31,6 +31,6 @@ app.use(express.static("../build"))
 app.use(errorHandler);
 
 app.listen(PORT, function(){
-    console.log("server listen on 8000");
+    console.log("server listen on "+PORT);
 });
 
