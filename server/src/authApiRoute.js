@@ -7,7 +7,7 @@ const { Image } = require("./imageModel");
 const { Order } = require("./orderModel");
 const uniqueNum = require("./uniqueNum");
 const { wait } = require("@testing-library/user-event/dist/utils");
-const upload = multer({dest:"../uploads"});
+const upload = multer({dest:"public/uploads"});
 
 const router = Router()
 
@@ -34,7 +34,7 @@ router.post("/upload", upload.single("file"), async (req, res)=>{
     const {_id, role} = req.decoded;
     const image = new Image({
         contentType : mimetype,
-        file: fs.readFileSync(fspath.join(__dirname, "../", path)),
+        file: fs.readFileSync(fspath.join(__dirname, "../../", path)),
         isAdmin: (role == "admin"),
         user_id:_id
     });
