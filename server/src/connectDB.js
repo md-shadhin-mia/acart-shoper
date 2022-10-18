@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 
-let MONGODB = process.env.MONGODB || "mongodb://localhost:27017/classman";
 
-const connectDB = async () => {
+const connectDB = async (MONGODB) => {
   try {
     await mongoose.connect(MONGODB);
-    console.log("MongoDB Connected...");
+    console.log("MongoDB Connected to "+MONGODB+"...");
   } catch (err) {
     console.error(err.message);
     process.exit(1);

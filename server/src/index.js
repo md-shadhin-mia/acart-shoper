@@ -14,13 +14,14 @@ const errorHandler = require("./errorHandle");
 require("dotenv").config();
 
 let PORT = process.env.PORT || 3000;
+let MONGODB = process.env.MONGODB || "mongodb://localhost:27017/texp";
 
 const app = express();
 
 
 app.use(cors());
 app.use(express.json());
-connectDB();
+connectDB(MONGODB);
 // app.get("/", function(req, res){
 //     res.json({hello:"this is shop api@ created by Shadhin"})
 // })
